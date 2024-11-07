@@ -1,7 +1,3 @@
 {
-	"C_Cpp.errorSquiggles": "disabled",
-	"files.associations": {
-		"stddef.h": "c",
-		"stdio.h": "c"
-	}
+	"C_Cpp.errorSquiggles": "disabled"
 }

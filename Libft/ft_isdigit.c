@@ -6,11 +6,13 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:42:20 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/05 17:42:28 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:31:12 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+#include "libft.h"
+
+int	ft_isdigit(int c)
 {
 	if (c < 48 || c > 57)
 	{

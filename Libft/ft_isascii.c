@@ -6,11 +6,13 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:43:18 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/05 17:43:21 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:31:17 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c)
+#include "libft.h"
+
+int	ft_isascii(int c)
 {	if (c < 0 || c > 127)
 	{
 		return (0);

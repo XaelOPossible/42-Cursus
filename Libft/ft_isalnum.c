@@ -6,11 +6,13 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:42:50 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/05 17:42:52 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:31:24 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalnum(int c)
+#include "libft.h"
+
+int	ft_isalnum(int c)
 {
 	if (((c < 65 || c > 90)
 		&& (c < 97 || c > 122))

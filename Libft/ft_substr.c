@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:37:07 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/07 17:46:29 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/07 14:53:07 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/07 16:28:45 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	while (*s)
+	char	*news;
+	size_t	n;
+
+	n = 0;
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) > start + len)
+		news = malloc((len + 1) * sizeof(char));
+	else
+		news = malloc(((ft_strlen(s) + 1) - start) * sizeof(char));
+	if (news == NULL)
+		return (NULL);
+	while (n < len)
 	{
-		if (*s == (char)c)
-		{
-			return ((char *)s);
-		}
-		s++;
+		news[n] = s[start + n];
+		n++;
 	}
-	if (c == '\0')
-	{
-		return ((char *)s);
-	}
-	return (NULL);
+	news[n] = 0;
+	return (news);
 }

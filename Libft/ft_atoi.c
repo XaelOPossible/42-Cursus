@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:37:07 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/07 17:46:29 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/07 13:21:45 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/07 16:31:44 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
-char	*ft_strchr(const char *s, int c)
+int	ft_atoi(const char *nptr)
 {
-	while (*s)
+	int	neg;
+	int	num;
+
+	neg = 1;
+	num = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
 	{
-		if (*s == (char)c)
+		nptr++;
+	}
+	if (*nptr == '+' || *nptr == '-')
+	{
+		if (*nptr == '-')
 		{
-			return ((char *)s);
+			neg *= -1;
 		}
-		s++;
+		nptr++;
 	}
-	if (c == '\0')
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		return ((char *)s);
+		num = num * 10 + (*nptr - 48);
+		nptr++;
 	}
-	return (NULL);
+	return (num * neg);
 }

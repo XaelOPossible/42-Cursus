@@ -6,11 +6,13 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:43:41 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/05 17:43:44 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:31:07 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isprint(int c)
+#include "libft.h"
+
+int	ft_isprint(int c)
 {
 	if (c < 32 || c >= 127)
 	{

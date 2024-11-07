@@ -6,13 +6,16 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:44:03 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/05 17:44:05 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:29:31 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t ft_strlen(const char *s)
+#include <stddef.h>
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	size_t a;
+	size_t	a;
 
 	a = 0;
 	while (s[a] != '\0')

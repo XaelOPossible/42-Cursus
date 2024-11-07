@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:37:07 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/07 17:46:29 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/07 13:49:42 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/07 16:34:41 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
-char	*ft_strchr(const char *s, int c)
+void	*calloc(size_t nmemb, size_t size)
 {
-	while (*s)
-	{
-		if (*s == (char)c)
-		{
-			return ((char *)s);
-		}
-		s++;
-	}
-	if (c == '\0')
-	{
-		return ((char *)s);
-	}
-	return (NULL);
+	unsigned int	i;
+	char			*tab;
+
+	i = nmemb * size;
+	if ((tab = malloc(i)) == NULL)
+		return (NULL);
+	ft_memset(tab, 0, i);
+	return (tab);
 }
