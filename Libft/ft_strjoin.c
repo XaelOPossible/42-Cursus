@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 13:55:43 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/08 15:35:47 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/08 14:30:57 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/08 15:32:05 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char		*dest2;
-	const unsigned char	*src2;
-	size_t				a;
+	size_t	len;
+	char	*compact;
 
-	dest2 = (unsigned char *) dest;
-	src2 = (const unsigned char *) src;
-	a = 0;
-	while (a < n)
+	len = (ft_strlen(s1) + ft_strlen(s2));
+	compact = malloc(sizeof(char) * (len + 1));
+	if (compact == 0)
 	{
-		dest2[a] = src2[a];
-		a++;
+		return (NULL);
 	}
-	return (dest);
+	compact[0] = '\0';
+	ft_strlcat(compact, s1, len + 1);
+	ft_strlcat(compact, s2, len + 1);
+	return (compact);
 }

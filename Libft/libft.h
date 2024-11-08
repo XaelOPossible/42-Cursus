@@ -6,15 +6,18 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:14:58 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/07 16:38:08 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:54:49 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <stddef.h>
-#include <stdio.h>
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <stddef.h>
+# include <stdio.h>
 
 void	ft_bzero(void *s, size_t n);
 int		ft_isalpha(int c);
@@ -37,6 +40,10 @@ int		ft_isascii(int c);
 int		ft_isalnum(int c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
-void	*calloc(size_t nmemb, size_t size);
-char	*strdup(const char *s);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+
+#endif
