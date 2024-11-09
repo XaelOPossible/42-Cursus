@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:37:07 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/09 17:07:06 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:11:36 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strchr(const char *s, int c)
 		}
 		s++;
 	}
-	if (c == '\0')
+	if (*s == (char)c)
 	{
 		return ((char *)s);
 	}
