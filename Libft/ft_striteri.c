@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:07:33 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/09 16:23:23 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/09 12:24:01 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/09 14:10:19 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
-	size_t	para1;
-	size_t	para2;
+	int	i;
+	int	j;
 
 	i = 0;
-	para1 = ft_strlen(dst);
-	para2 = ft_strlen(src);
-	if (size <= para1)
-		return (para2 + size);
-	while (src[i] != '\0' && para1 + i < size - 1)
+	j = 0;
+	if (s != NULL && f != NULL)
 	{
-		dst[para1 + i] = src[i];
-		i++;
+		i = ft_strlen(s);
+		while (j < i)
+		{
+			(*f)(j, s);
+			s++;
+			j++;
+		}
 	}
-	dst[para1 + i] = '\0';
-	return (para1 + para2);
 }

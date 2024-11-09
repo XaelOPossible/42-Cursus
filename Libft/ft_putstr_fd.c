@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:07:33 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/09 16:23:23 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/09 12:39:43 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/09 14:09:41 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-	size_t	para1;
-	size_t	para2;
+	int	i;
 
 	i = 0;
-	para1 = ft_strlen(dst);
-	para2 = ft_strlen(src);
-	if (size <= para1)
-		return (para2 + size);
-	while (src[i] != '\0' && para1 + i < size - 1)
+	while (s[i])
 	{
-		dst[para1 + i] = src[i];
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	dst[para1 + i] = '\0';
-	return (para1 + para2);
 }

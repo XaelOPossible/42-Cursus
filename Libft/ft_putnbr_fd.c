@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:07:33 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/09 16:23:23 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/09 12:47:09 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/09 14:07:40 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	size_t	para1;
-	size_t	para2;
+	int	v;
 
-	i = 0;
-	para1 = ft_strlen(dst);
-	para2 = ft_strlen(src);
-	if (size <= para1)
-		return (para2 + size);
-	while (src[i] != '\0' && para1 + i < size - 1)
+	v = n;
+	if (v == -2147483648)
 	{
-		dst[para1 + i] = src[i];
-		i++;
+		ft_putstr_fd("-2147483648", fd);
+		return ;
 	}
-	dst[para1 + i] = '\0';
-	return (para1 + para2);
+	if (v < 0)
+	{
+		v *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (v >= 10)
+	{
+		ft_putnbr_fd(v / 10, fd);
+		ft_putnbr_fd(v % 10, fd);
+	}
+	else
+		ft_putchar_fd(v + '0', fd);
 }

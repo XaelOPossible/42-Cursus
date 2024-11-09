@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:15:51 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/07 17:59:20 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:22:13 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (p1[i] == p2[i] && p1[i] && p2[i] && i < n - 1)
+	while (i < n)
 	{
+		if (p1[i] != p2[i])
+		{
+			return (p1[i] - p2[i]);
+		}
 		i++;
 	}
-	return (p1[i] - p2[i]);
+	return (0);
 }

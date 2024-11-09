@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:18:29 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/08 15:33:53 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:58:52 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char	*dn_occu = NULL;
+	char	*src;
 
-	while (*s)
+	src = (char *) s;
+	while(*src)
+		src++;
+	if((unsigned char)c == '\0')
+		return (src);
+	while (src >= s)
 	{
-		if (*s == c)
-		{
-			dn_occu = (char *)s;
-		}
-		s++;
+		if (*src == (unsigned char)c)
+			return (src);
+		src--;
 	}
-	if (c == '\0')
-	{
-		return ((char *) s);
-	}
-	return ((char *)dn_occu);
+	return (NULL);
 }
