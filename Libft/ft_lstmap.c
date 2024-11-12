@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 12:18:29 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/12 11:13:35 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/12 15:07:53 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/12 16:58:03 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
-char	*ft_strrchr(const char *s, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*src;
+	t_list	*lst2;
+	t_list	*object;
+	void	*content;
 
-	src = (char *) s;
-	while (*src)
-		src++;
-	if ((unsigned char)c == '\0')
-		return (src);
-	while (src >= s)
+	if (!lst || !del)
+		return (0);
+	lst2 = 0;
+	while (lst)
 	{
-		if (*src == (unsigned char)c)
-			return (src);
-		src--;
+		content = f(lst->content);
+		object = ft_lstnew(content);
+		if (!object)
+		{
+			del(content);
+			ft_lstclear(&lst2, del);
+			return (0);
+		}
+		ft_lstadd_back(&lst2, object);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (lst2);
 }

@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:56:30 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/09 16:33:04 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:13:49 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*s1;
-	unsigned char target;
+	unsigned char	target;
 	size_t			a;
 
 	target = (unsigned char)c;
