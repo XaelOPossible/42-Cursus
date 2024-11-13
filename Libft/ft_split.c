@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:59:27 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/13 10:40:02 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:52:11 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ char	**ft_split(char const *s, char c)
 	tab = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!tab)
 		return (NULL);
-	populate_tab(tab, s, c, j);
+	tab = populate_tab(tab, s, c, j);
 	return (tab);
 }
