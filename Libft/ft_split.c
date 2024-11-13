@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:59:27 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/12 17:24:30 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:40:02 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,13 @@ static void	free_tab(char **tab)
 		while (tab[i])
 		{
 			free(tab[i]);
+			i++;
 		}
 		free(tab);
 	}
 }
 
-static char	**populate_tab(char **tab, const char *s, char c, int *j)
+static char	**populate_tab(char **tab, const char *s, char c, int j)
 {
 	int	i;
 
@@ -81,17 +82,18 @@ static char	**populate_tab(char **tab, const char *s, char c, int *j)
 			i++;
 		if (s[i] && s[i] != c)
 		{
-			tab[*j] = malloc_mots((char *)&s[i], c);
-			if (!tab[*j])
+			tab[j] = malloc_mots((char *)&s[i], c);
+			if (!tab[j])
 			{
 				free_tab(tab);
 				return (NULL);
 			}
-			(*j)++;
+			j++;
 			while (s[i] && s[i] != c)
 				i++;
 		}
 	}
+	tab[j] = NULL;
 	return (tab);
 }
 
@@ -108,12 +110,6 @@ char	**ft_split(char const *s, char c)
 	tab = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!tab)
 		return (NULL);
-	tab = populate_tab(tab, s, c, &j);
-	if (tab == NULL)
-	{
-		free_tab(tab);
-		return (NULL);
-	}
-	tab[j] = NULL;
+	populate_tab(tab, s, c, j);
 	return (tab);
 }
