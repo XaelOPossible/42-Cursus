@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:43:18 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/15 10:47:45 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/13 15:07:41 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/13 15:31:34 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
-int	ft_isascii(int c)
-{
-	if (c < 0 || c > 127)
-	{
-		return (0);
-	}
-	return (1);
-}
+#include <unistd.h>
+#include <stdio.h>
+#include <stdarg.h>
+
+
+
+#endif

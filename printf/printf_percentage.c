@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   printf_percentage.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:43:18 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/15 10:47:45 by axemicha         ###   ########.fr       */
+/*   Created: 2024/11/13 15:03:03 by axemicha          #+#    #+#             */
+/*   Updated: 2024/11/13 15:54:25 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-int	ft_isascii(int c)
+void printf_perc_c(char c)
 {
-	if (c < 0 || c > 127)
+	write(1, &c, 1);
+}
+
+void printf_perc_string(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
 	{
-		return (0);
+		write(1, &str, 1);
 	}
-	return (1);
+}
+
+void printf_perc_p(void *element)
+{
+	
 }
