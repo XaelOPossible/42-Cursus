@@ -13,11 +13,14 @@
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdarg.h>
+# include "libft.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
 
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
+void	ft_print_hexadecimal(void *ptr);
+void    ft_putnbr(int nb);
 
 #endif

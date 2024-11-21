@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
-void inverse_tab(int start, int size, char buff)
+static void inverse_tab(int start, int size, char *buff)
 {
 	int i;
 	int j;
@@ -23,9 +22,9 @@ void inverse_tab(int start, int size, char buff)
 	j = size - 1;
 	while (i < j)
 	{
-		temp = buffer[i];
-		buffer[i] = buffer[j];
-		buffer[j] = temp;
+		temp = buff[i];
+		buff[i] = buff[j];
+		buff[j] = temp;
 		i++;
 		j--;
 	}
@@ -39,32 +38,30 @@ void	ft_print_hexadecimal(void *ptr)
 	int size;
 	int start;
 	
-	adress = (unisgned long)ptr;
-	buffer[size++] = '0'
-	buffer[size++] = 'x'
+	adress = (unsigned long)ptr;
+	buffer[size++] = '0';
+	buffer[size++] = 'x';
 	start = size;
 	hexatab = "0123456789abcdef";
 
 	if (adress == 0)
-	{
 		buffer[size++] = '0';
-	}
 	else
 	{
 		while (adress > 0)
 		{
-			buffer[taille++] = hexatab[adress % 16];
+			buffer[size++] = hexatab[adress % 16];
 			adress /= 16;
 		}
 	}
 	inverse_tab(start, size, buffer);
 	buffer[size++] = '\n';
-	write(1, buffer, taille);
+	write(1, buffer, size);
 }
-int main()
-{
-	int x = 42;
-	int *ptr = &x;
-	ft_print_hexadecimal(ptr);
-	return (0);
-}
+// int main()
+// {
+// 	int x = 42;
+// 	int *ptr = &x;
+// 	ft_print_hexadecimal(ptr);
+// 	return (0);
+// }
