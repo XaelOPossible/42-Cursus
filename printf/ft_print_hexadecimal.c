@@ -30,15 +30,16 @@ static void inverse_tab(int start, int size, char *buff)
 	}
 }
 
-void	ft_print_hexadecimal(void *ptr)
+int	ft_print_hexadecimal(void *ptr)
 {
-	unsigned long adress;
+	unsigned long long adress;
 	const char *hexatab;
 	char buffer[20];
 	int size;
 	int start;
 	
-	adress = (unsigned long)ptr;
+	size = 0;
+	adress = (unsigned long long)ptr;
 	buffer[size++] = '0';
 	buffer[size++] = 'x';
 	start = size;
@@ -57,11 +58,5 @@ void	ft_print_hexadecimal(void *ptr)
 	inverse_tab(start, size, buffer);
 	buffer[size++] = '\n';
 	write(1, buffer, size);
+	return (size);
 }
-// int main()
-// {
-// 	int x = 42;
-// 	int *ptr = &x;
-// 	ft_print_hexadecimal(ptr);
-// 	return (0);
-// }

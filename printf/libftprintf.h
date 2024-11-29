@@ -18,9 +18,17 @@
 # include <stdio.h>
 # include <stdarg.h>
 
-void	ft_putstr(char *str);
-void	ft_putchar(char c);
-void	ft_print_hexadecimal(void *ptr);
-void    ft_putnbr(int nb);
+void    ft_putstr(char *str);
+int     ft_print_hexadecimal(void *ptr);
+int     ft_print_percent(void);
+void    ft_putstr(char *str);
+int     ft_printstr(char *str);
+int     ft_printnbr(int n);
+int     ft_printuint(unsigned int n);
+int     ft_printhex_uplow(unsigned int num, const char type);
+void    ft_puthex(unsigned int num, const char type);
+int     ft_hexlen(unsigned int num);
+int     ft_print_arg(va_list args, const char type);
+int     ft_printf(const char *str, ...);
 
 #endif
