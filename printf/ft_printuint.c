@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printuint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axemicha <axemicha@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:49:15 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/29 11:56:59 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:30:26 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	cal_len(unsigned int n)
 {
@@ -38,9 +38,7 @@ static void	fill_string(char *str, unsigned int n, int len)
 		len--;
 	}
 	else
-	{
 		len--;
-	}
 	while (n > 0)
 	{
 		str[len] = (n % 10) + '0';
@@ -55,13 +53,7 @@ char	*ft_uitoa(unsigned int n)
 	int		len;
 
 	if (n == 0)
-	{
 		return (ft_strdup("0"));
-	}
-	if (n == -2147483648)
-	{
-		return (ft_strdup("-2147483648"));
-	}
 	len = cal_len(n);
 	str = malloc(len + 1);
 	if (!str)
@@ -72,19 +64,22 @@ char	*ft_uitoa(unsigned int n)
 	return (str);
 }
 
-int ft_printuint(unsigned int n)
+int	ft_printuint(unsigned int n)
 {
-    int     len;
-    char    *num;
+	int		len;
+	char	*num;
 
-    len = 0;
-    if (len == 0)
-        len += write(1, '0', 1);
-    else
-    {
-        num = utioa(n);
-        len += ft_printstr(num);
-        free(num);
-        return (len);
-    }
+	len = 0;
+	if (len == 0)
+	{
+		ft_putchar_fd('0', 1);
+		len = 1;
+	}
+	else
+	{
+		num = ft_uitoa(n);
+		len += ft_printstr(num);
+		free(num);
+	}
+	return (len);
 }

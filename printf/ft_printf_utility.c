@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utility.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axemicha <axemicha@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:21:59 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/29 11:57:29 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:25:54 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
 #include "libft.h"
+#include "ft_printf.h"
 
-void    ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int	i;
 
@@ -21,40 +21,42 @@ void    ft_putstr(char *str)
 	while (str[i])
 	{
 		write(1, &str[i], 1);
-        i++;
+		i++;
 	}
 }
 
-int ft_printstr(char *str)
+int	ft_printstr(char *str)
 {
-    int i;
-    
-    i = 0;
-    if (str == NULL)
-        ft_putstr("(null)");
-        return (6);
-    while (str[i])
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
+	while (str[i])
 	{
 		write(1, &str[i], 1);
-        i++;
+		i++;
 	}
-    return (i);
+	return (i);
 }
 
-int ft_printnbr(int n)
+int	ft_printnbr(int n)
 {
-    int     len;
-    char    *num;
+	int		len;
+	char	*num;
 
-    len = 0;
-    num = ft_itoa(n);
-    len = ft_printstr(num);
-    free(num);
-    return(len);
+	len = 0;
+	num = ft_itoa(n);
+	len = ft_printstr(num);
+	free(num);
+	return (len);
 }
 
-int ft_print_percent(void)
+int	ft_print_percent(void)
 {
-    write(1, '%', 1);
-    return (1);
+	ft_putchar_fd('%', 1);
+	return (1);
 }

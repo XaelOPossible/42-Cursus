@@ -1,8 +1,9 @@
 NAME = libftprintf.a
 
 SOURCES = \
-		ft_print_hexadecimal.c ft_printhexa_uplow.c ft_printf_utility.c \
-		ft_printuint.c ft_printf.c
+		Libft/ft_strlen.c Libft/ft_putchar_fd.c Libft/ft_itoa.c Libft/ft_strdup.c \
+		ft_print_hexadecimal.c ft_printf_utility.c ft_printf.c \
+		ft_printhexa_uplow.c ft_printuint.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -13,10 +14,10 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(AR) -r $@ $?
+	$(AR) -r $@ $^
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
