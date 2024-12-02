@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:01:07 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/29 13:30:08 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:01:23 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	ft_hexlen(unsigned int num)
 	int	len;
 
 	len = 0;
-	while (!num)
+	while (num != 0)
 	{
 		len++;
-		num /= 16;
+		num = num / 16;
 	}
 	return (len);
 }
@@ -30,8 +30,8 @@ void	ft_puthex(unsigned int num, const char type)
 {
 	if (num >= 16)
 	{
-		ft_puthex((num / 16), type);
-		ft_puthex((num % 16), type);
+		ft_puthex(num / 16, type);
+		ft_puthex(num % 16, type);
 	}
 	else
 	{
@@ -50,10 +50,7 @@ void	ft_puthex(unsigned int num, const char type)
 int	ft_printhex_uplow(unsigned int num, const char type)
 {
 	if (num == 0)
-	{
-		ft_puthex(num, type);
-		return (1);
-	}
+		return (write(1, "0", 1));
 	else
 		ft_puthex(num, type);
 	return (ft_hexlen(num));

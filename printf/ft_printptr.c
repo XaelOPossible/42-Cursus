@@ -13,50 +13,47 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-static void	inverse_tab(int start, int size, char *buff)
+static int	ft_ptrlen(unsigned long long num)
 {
-	int		i;
-	int		j;
-	char	temp;
+	int	len;
 
-	i = start;
-	j = size - 1;
-	while (i < j)
+	len = 0;
+	while (num != 0)
 	{
-		temp = buff[i];
-		buff[i] = buff[j];
-		buff[j] = temp;
-		i++;
-		j--;
+		len++;
+		num = num / 16;
+	}
+	return (len);
+}
+
+static void	ft_printhex(unsigned long long num)
+{
+	if (num >= 16)
+	{
+		ft_printhex(num / 16);
+		ft_printhex(num % 16);
+	}
+	else
+	{
+		if (num <= 9)
+			ft_putchar_fd((num + '0'), 1);
+		else
+			ft_putchar_fd((num - 10 + 'a'), 1);
 	}
 }
 
-int	ft_print_hexadecimal(void *ptr)
+int	ft_printptr(unsigned long long ptr)
 {
-	unsigned long long	adress;
-	const char			*hexatab;
-	char				buffer[20];
-	int					size;
-	int					start;
+	int	len;
 
-	size = 0;
-	adress = (unsigned long long)ptr;
-	buffer[size++] = '0';
-	buffer[size++] = 'x';
-	start = size;
-	hexatab = "0123456789abcdef";
-	if (adress == 0)
-		buffer[size++] = '0';
-	else
+	len = 0;
+	if (ptr == 0)
 	{
-		while (adress > 0)
-		{
-			buffer[size++] = hexatab[adress % 16];
-			adress /= 16;
-		}
+		len += write(1, "(nil)", 5);
+		return (len);
 	}
-	inverse_tab(start, size, buffer);
-	buffer[size++] = '\n';
-	write(1, buffer, size);
-	return (size);
+	len += write(1, "0x", 2);
+	ft_printhex(ptr);
+	len += ft_ptrlen(ptr);
+	return (len);
 }

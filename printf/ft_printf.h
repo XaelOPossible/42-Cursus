@@ -19,9 +19,9 @@
 # include <stdarg.h>
 
 void	ft_puthex(unsigned int num, const char type);
-int		ft_printchar(char c);
+int		ft_printchar(int c);
 void	ft_putstr(char *str);
-int		ft_print_hexadecimal(void *ptr);
+int		ft_printptr(unsigned long long ptr);
 int		ft_print_percent(void);
 void	ft_putstr(char *str);
 int		ft_printstr(char *str);

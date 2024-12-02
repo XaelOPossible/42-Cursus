@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:49:15 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/29 13:30:26 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:47:55 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,7 @@ static int	cal_len(unsigned int n)
 static void	fill_string(char *str, unsigned int n, int len)
 {
 	str[len] = '\0';
-	if (n < 0)
-	{
-		str[0] = '-';
-		n *= -1;
-		len--;
-	}
-	else
-		len--;
+	len --;
 	while (n > 0)
 	{
 		str[len] = (n % 10) + '0';
@@ -70,7 +63,7 @@ int	ft_printuint(unsigned int n)
 	char	*num;
 
 	len = 0;
-	if (len == 0)
+	if (n == 0)
 	{
 		ft_putchar_fd('0', 1);
 		len = 1;

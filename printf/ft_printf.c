@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int	ft_printchar(char c)
+int	ft_printchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -25,11 +25,11 @@ int	ft_print_arg(va_list args, const char type)
 
 	print_type = 0;
 	if (type == 'c')
-		print_type += ft_printchar(va_arg (args, char));
+		print_type += ft_printchar(va_arg (args, int));
 	else if (type == 's')
 		print_type += ft_printstr(va_arg (args, char *));
 	else if (type == 'p')
-		print_type += ft_print_hexadecimal(va_arg (args, void *));
+		print_type += ft_printptr(va_arg (args, unsigned long long));
 	else if (type == 'd' || type == 'i')
 		print_type += ft_printnbr(va_arg (args, int));
 	else if (type == 'u')
@@ -58,7 +58,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else
-			print_len += ft_printstr((char *)&str[i]);
+			print_len += ft_printchar(str[i]);
 		i++;
 	}
 	va_end(args);
