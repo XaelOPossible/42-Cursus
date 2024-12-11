@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:56:01 by axemicha          #+#    #+#             */
-/*   Updated: 2024/12/07 10:57:22 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:08:20 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ char *free_line(char *buffer, char *buff)
 }
 char	*next_line(char *buffer)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*result;
 
 	i = 0;
@@ -46,7 +46,7 @@ char	*next_line(char *buffer)
 	result = ft_calloc(sizeof(char), ft_strlen(buffer) - i + 1);
 	i++;
 	j = 0;
-	while()
+	while(buffer[i])
 	{
 		result[j++] = buffer[i++];
 	}
@@ -87,17 +87,16 @@ char	*read_fd(int fd, char *src)
 	while (buffer_read > 0)
 	{
 		buffer_read = read(fd, buffer, BUFFER_SIZE);
-		if (buffer_read = -1)
+		if (buffer_read == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
 	buffer[buffer_read] = 0;
-	str = free_line(src, buffer);
+	src = free_line(src, buffer);
 	if (ft_strchr(buffer, '\n'))
-		break;  
+		break;
 	}
-	free(src);
 	return (src);
 }
 
@@ -106,7 +105,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char	*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) <= 0)
 		return (NULL);
 	buffer = read_fd(fd, buffer);
 	if (!buffer)
@@ -114,5 +113,6 @@ char	*get_next_line(int fd)
 	line = ft_line(buffer);
 	buffer = next_line(buffer);
 	return (line);
-
 }
+
+

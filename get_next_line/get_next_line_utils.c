@@ -6,13 +6,13 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:30:26 by axemicha          #+#    #+#             */
-/*   Updated: 2024/12/07 10:57:24 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:30:46 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *line)
+size_t	ft_strlen(const char *line)
 {
 	int i;
 
@@ -35,17 +35,15 @@ void	ft_bzero(void *s, size_t n)
 		a++;
 	}
 }
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned int	i;
-	char			*tab;
-
-	i = nmemb * size;
-	tab = malloc(i);
-	if (tab == NULL)
+	void	*bzero;
+	
+	bzero = (void *)malloc(count * size);
+	if (!bzero)
 		return (NULL);
-	ft_memset(tab, 0, i);
-	return (tab);
+	ft_bzero(bzero, count * size);
+	return (bzero);
 }
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)

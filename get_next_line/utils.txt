@@ -5,7 +5,7 @@ count :  Le nombre maximal d'octets à lire.
 
 //////////
 
-Une fonction qui calcule la taille d'une ligne jusqu'a la fin du fichier
+Une fonction qui calcule la taille d'une ligne jusqu'a la fin du fichir
 
 Une fonction qui malloc la taille de la ligne a ecrire toujours suivis d'un \n
 
@@ -14,4 +14,9 @@ Une fonction qui ecrit la ligne sur la ligne standard
 /////////
 
 le programme renvoie NULL si une erreur est trouve ou que le fichier est vide
+
+/////////
+
+free_line #permet de free les lignes que l'on a lu apres
+
 
