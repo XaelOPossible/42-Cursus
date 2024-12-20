@@ -1,19 +1,14 @@
 #include "get_next_line.h"
 #include <fcntl.h>
+#include <stdio.h>
 
-int main(int argc, char **argv)
+int main()
 {
     int fd;
     char *line;
 
-    if (argc != 2)
-    {
-        printf("Usage: %s <file>\n", argv[0]);
-        return (1);
-    }
-
-    // Ouvrir le fichier en lecture seule
-    fd = open(argv[1], O_RDONLY);
+    // Ouvrir un fichier test en lecture seule
+    fd = open("test2.txt", O_RDONLY);
     if (fd < 0)
     {
         perror("Error opening file");
@@ -21,7 +16,7 @@ int main(int argc, char **argv)
     }
 
     // Lire les lignes avec get_next_line
-    printf("Reading lines from file: %s\n\n", argv[1]);
+    printf("Reading lines from file: test2.txt\n\n");
     while ((line = get_next_line(fd)) != NULL)
     {
         printf("%s", line); // La ligne inclut normalement le '\n'
