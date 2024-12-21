@@ -19,10 +19,12 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
+AR = ar rcs
+
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(BOBJECTS)
-	$(AR) -r $@ $?
+	$(AR) $@ $^
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $?

@@ -13,10 +13,10 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdarg.h>
+# include "./libft/libft.h"
 
 void	ft_puthex(unsigned int num, const char type);
 int		ft_printchar(int c);
