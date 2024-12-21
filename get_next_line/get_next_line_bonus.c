@@ -6,7 +6,7 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:56:01 by axemicha          #+#    #+#             */
-/*   Updated: 2024/12/21 11:46:04 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:25:52 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ char	*free_line(char *buffer, char *buff)
 	char	*tmp;
 
 	if (!buffer)
+	{
 		buffer = ft_calloc(1, 1);
+		if (!buffer)
+			return (NULL);
+	}
 	tmp = ft_strjoin(buffer, buff);
 	free(buffer);
 	return (tmp);
@@ -107,6 +111,17 @@ char	*get_next_line(int fd)
 	if (!buffer[fd])
 		return (NULL);
 	line = ft_line(buffer[fd]);
+	if (!line)
+	{
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+		return (NULL);
+	}
 	buffer[fd] = next_line(buffer[fd]);
+	if (!buffer[fd])
+	{
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+	}
 	return (line);
 }

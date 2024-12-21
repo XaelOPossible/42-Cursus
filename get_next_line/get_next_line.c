@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:56:01 by axemicha          #+#    #+#             */
-/*   Updated: 2024/12/20 16:49:45 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:33:36 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,17 @@ char	*free_line(char *buffer, char *buff)
 	char	*tmp;
 
 	if (!buffer)
+	{
 		buffer = ft_calloc(1, 1);
+		if (!buffer)
+			return (NULL);
+	}
 	tmp = ft_strjoin(buffer, buff);
+	if (!tmp)
+	{
+		free(buffer);
+		return (NULL);
+	}
 	free(buffer);
 	return (tmp);
 }
@@ -31,6 +40,8 @@ char	*next_line(char *buffer)
 
 	i = 0;
 	j = 0;
+	if (!buffer)
+		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
@@ -39,6 +50,8 @@ char	*next_line(char *buffer)
 		return (NULL);
 	}
 	result = ft_calloc(sizeof(char), ft_strlen(buffer) - i + 1);
+	if (!result)
+		return (NULL);
 	i++;
 	while (buffer[i])
 		result[j++] = buffer[i++];
@@ -98,7 +111,7 @@ char	*read_fd(int fd, char *src)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer = NULL;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -107,6 +120,17 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = ft_line(buffer);
+	if (!line)
+	{
+		free(buffer);
+		buffer = NULL;
+		return (NULL);
+	}
 	buffer = next_line(buffer);
+	if (!buffer)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
 	return (line);
 }
