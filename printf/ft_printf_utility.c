@@ -6,11 +6,10 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:21:59 by axemicha          #+#    #+#             */
-/*   Updated: 2024/11/29 13:25:54 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:09:24 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 void	ft_putstr(char *str)

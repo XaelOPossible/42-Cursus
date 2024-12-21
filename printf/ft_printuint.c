@@ -6,11 +6,10 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:49:15 by axemicha          #+#    #+#             */
-/*   Updated: 2024/12/02 14:47:55 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:09:42 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 static int	cal_len(unsigned int n)

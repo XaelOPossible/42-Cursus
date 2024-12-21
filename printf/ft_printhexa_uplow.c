@@ -6,11 +6,10 @@
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:01:07 by axemicha          #+#    #+#             */
-/*   Updated: 2024/12/02 15:01:23 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:09:20 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 int	ft_hexlen(unsigned int num)
