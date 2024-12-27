@@ -8,7 +8,7 @@ int main()
     char *line;
 
     // Ouvrir un fichier test en lecture seule
-    fd = open("test2.txt", O_RDONLY);
+    fd = open("text2.txt", O_RDONLY);
     if (fd < 0)
     {
         perror("Error opening file");

@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:30:26 by axemicha          #+#    #+#             */
-/*   Updated: 2024/12/20 16:56:34 by axemicha         ###   ########.fr       */
+/*   Updated: 2024/12/21 13:50:17 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (bzero);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	size_t	i;
