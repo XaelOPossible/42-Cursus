@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:38:56 by axemicha          #+#    #+#             */
-/*   Updated: 2025/01/16 15:02:32 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:02:34 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,44 @@ void	ft_check_content(t_data *data)
 	}
 }
 
+int ft_check_lockce(char **map)
+{
+	int	x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (map[x])
+	{
+		while(map[x][y])
+		{
+			if (map[x][y] == 'C' &&
+				(map[x - 1][y] == '1' &&
+				map[x + 1][y] == '1' &&
+				map[x][y - 1] == '1' &&
+				map[x][y + 1] == '1'))
+			{
+				ft_error("Error\ncollect can't be taken\n");
+				return (0);
+			}
+				
+			if (map[x][y] == 'E' &&
+				(map[x - 1][y] == '1' &&
+				map[x + 1][y] == '1' &&
+				map[x][y - 1] == '1' &&
+				map[x][y + 1] == '1'))
+			{
+				ft_error("Error\nexit can't be taken\n");
+				return (0);
+			}
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+	return (1);
+}
+
 int	ft_check_format(char **map)
 {
 	int		y;
@@ -118,3 +156,4 @@ int	ft_check_format(char **map)
 	}
 	return (1);
 }
+

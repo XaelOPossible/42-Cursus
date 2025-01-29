@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:51:10 by axemicha          #+#    #+#             */
-/*   Updated: 2025/01/16 15:37:35 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:02:41 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int		ft_check_other(char *map_line, t_element *content);
 void	ft_check_content(t_data *data);
 int		ft_check_format(char **map);
 int		chk_collect(t_data *data);
+int 	ft_check_lockce(char **map);
 
 void	set_img(t_data *data);
 void	set_elements(t_element *content);

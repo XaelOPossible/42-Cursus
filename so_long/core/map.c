@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:15:45 by axemicha          #+#    #+#             */
-/*   Updated: 2025/01/16 15:20:18 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:02:17 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ char	**parse_map(int fd, t_data *data)
 	if (!(ft_check_format(data->map)))
 		return (ft_free_map(data));
 	if (!(ft_check_line(data->map[0], data->content.wall)))
+		return (ft_free_map(data));
+	if (!(ft_check_lockce(data->map)))
 		return (ft_free_map(data));
 	while (data->map[i] != NULL)
 	{
