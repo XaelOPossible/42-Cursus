@@ -29,20 +29,17 @@ void	ft_puthex(unsigned int num, const char type)
 {
 	if (num >= 16)
 	{
-		ft_puthex(num / 16, type);
-		ft_puthex(num % 16, type);
+		ft_puthex(num / 16
+		ft_puthex(num % 16
 	}
 	else
 	{
 		if (num <= 9)
-			ft_putchar_fd((num + '0'), 1);
+			ft_putchar_fd((num + '0')
 		else
 		{
-			if (type == 'x')
-				ft_putchar_fd((num - 10 + 'a'), 1);
-			if (type == 'X')
-				ft_putchar_fd((num - 10 + 'A'), 1);
-		}
+		
+				ft_putchar_fd((num - 10 + 'a')
 	}
 }
 
