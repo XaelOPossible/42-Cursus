@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:15:45 by axemicha          #+#    #+#             */
-/*   Updated: 2025/01/29 15:02:17 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:30:47 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,50 +36,78 @@ char	*get_map(int fd)
 		}
 		return (buff);
 	}
+	free(buff);
 	ft_error("Error\nWrong lecture map\n");
 	return (NULL);
 }
 
-void	*ft_free_map(t_data *data)
+void	parse_map_content(t_data *data)
 {
-	int		i;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (data->map[i] != NULL)
+	data->content.count_p = 0;
+	data->content.count_c = 0;
+	data->content.count_e = 0;
+	y = -1;
+	while (data->map[++y])
 	{
-		free(data->map[i]);
-		i++;
+		x = -1;
+		while (data->map[y][++x])
+		{
+			if (data->map[y][x] == data->content.player)
+			{
+				data->pos.x = x;
+				data->pos.y = y;
+				data->content.count_p++;
+			}
+			if (data->map[y][x] == data->content.collect)
+				data->content.count_c++;
+			if (data->map[y][x] == data->content.exit)
+				data->content.count_e++;
+		}
 	}
-	free(data->map);
-	data->map = NULL;
-	return (0);
 }
 
-char	**parse_map(int fd, t_data *data)
+char	**parse_mapt(t_data *data)
 {
-	int		i;
+	int	i;
 
 	i = 1;
-	data->map = ft_split(get_map(fd), '\n');
 	ft_check_content(data);
-	if (!(ft_check_format(data->map)))
+	if (!ft_check_format(data->map))
 		return (ft_free_map(data));
-	if (!(ft_check_line(data->map[0], data->content.wall)))
-		return (ft_free_map(data));
-	if (!(ft_check_lockce(data->map)))
+	if (!ft_check_line(data->map[0], data->content.wall))
 		return (ft_free_map(data));
 	while (data->map[i] != NULL)
 	{
-		if (!(ft_check_col(data->map[i], data->content.wall, data)))
+		if (!ft_check_col(data->map[i], data->content.wall, data))
 			return (ft_free_map(data));
-		else if (!(ft_check_other(data->map[i], &(data->content))))
+		else if (!ft_check_other(data->map[i], &(data->content)))
 			return (ft_free_map(data));
 		i++;
 	}
 	data->height = i;
-	if (!(ft_check_line(data->map[i - 1], data->content.wall)))
+	if (!ft_check_line(data->map[i - 1], data->content.wall))
+		return (ft_free_map(data));
+	parse_map_content(data);
+	if (!ft_check_collect_access(data->map, data))
 		return (ft_free_map(data));
 	return (data->map);
+}
+
+char	**parse_map(int fd, t_data *data)
+{
+	char	*raw_map;
+
+	raw_map = get_map(fd);
+	if (!raw_map)
+		return (NULL);
+	data->map = ft_split(raw_map, '\n');
+	free(raw_map);
+	if (!data->map)
+		return (NULL);
+	return (parse_mapt(data));
 }
 
 char	**map_core(char **str, t_data *data)
@@ -101,8 +129,7 @@ char	**map_core(char **str, t_data *data)
 				|| data->content.count_p != 1) && data->map != NULL)
 		{
 			ft_free_map(data);
-			return (ft_error(
-					"Error\nNeed 1 Player/Exit and at least 1 Object\n"));
+			return (ft_error("Error\nNeed 1 Player/Exit, mini 1 object\n"));
 		}
 	}
 	return (data->map);

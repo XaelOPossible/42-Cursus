@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:49:55 by axemicha          #+#    #+#             */
-/*   Updated: 2025/02/07 10:52:05 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/03/28 11:04:06 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	set_elements(t_element *content)
 	content->count_e = 0;
 	content->count_c = 0;
 }
+
 void	set_img(t_data *data)
 {
 	data->img.height = 80;
@@ -38,8 +39,8 @@ void	set_img(t_data *data)
 			&(data->img.width), &(data->img.height));
 	data->img.img_exit = mlx_xpm_file_to_image(data->mlx_ptr, data->img.exit,
 			&(data->img.width), &(data->img.height));
-	data->img.img_collect = mlx_xpm_file_to_image(data->mlx_ptr,
+	data->img.img_c = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->img.collect, &(data->img.width), &(data->img.height));
-	data->img.img_player = mlx_xpm_file_to_image(data->mlx_ptr,
+	data->img.img_p = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->img.player, &(data->img.width), &(data->img.height));
 }

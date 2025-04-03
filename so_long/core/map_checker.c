@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:38:56 by axemicha          #+#    #+#             */
-/*   Updated: 2025/01/29 15:02:34 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/03/28 10:59:45 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,68 +69,6 @@ int	ft_check_other(char *map_line, t_element *content)
 	return (1);
 }
 
-void	ft_check_content(t_data *data)
-{
-	int		i;
-	int		y;
-
-	i = 0;
-	y = 0;
-	while (data->map[i])
-	{
-		while (data->map[i][y])
-		{
-			if (data->map[i][y] == data->content.collect)
-				data->content.count_c += 1;
-			if (data->map[i][y] == data->content.player)
-				data->content.count_p += 1;
-			if (data->map[i][y] == data->content.exit)
-				data->content.count_e += 1;
-			y++;
-		}
-		y = 0;
-		i++;
-	}
-}
-
-int ft_check_lockce(char **map)
-{
-	int	x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (map[x])
-	{
-		while(map[x][y])
-		{
-			if (map[x][y] == 'C' &&
-				(map[x - 1][y] == '1' &&
-				map[x + 1][y] == '1' &&
-				map[x][y - 1] == '1' &&
-				map[x][y + 1] == '1'))
-			{
-				ft_error("Error\ncollect can't be taken\n");
-				return (0);
-			}
-				
-			if (map[x][y] == 'E' &&
-				(map[x - 1][y] == '1' &&
-				map[x + 1][y] == '1' &&
-				map[x][y - 1] == '1' &&
-				map[x][y + 1] == '1'))
-			{
-				ft_error("Error\nexit can't be taken\n");
-				return (0);
-			}
-			y++;
-		}
-		y = 0;
-		x++;
-	}
-	return (1);
-}
-
 int	ft_check_format(char **map)
 {
 	int		y;
@@ -157,3 +95,26 @@ int	ft_check_format(char **map)
 	return (1);
 }
 
+void	ft_check_content(t_data *data)
+{
+	int		i;
+	int		y;
+
+	i = 0;
+	y = 0;
+	while (data->map[i])
+	{
+		while (data->map[i][y])
+		{
+			if (data->map[i][y] == data->content.collect)
+				data->content.count_c += 1;
+			if (data->map[i][y] == data->content.player)
+				data->content.count_p += 1;
+			if (data->map[i][y] == data->content.exit)
+				data->content.count_e += 1;
+			y++;
+		}
+		y = 0;
+		i++;
+	}
+}

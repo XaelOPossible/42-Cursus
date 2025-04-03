@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:35:58 by axemicha          #+#    #+#             */
-/*   Updated: 2025/01/28 14:32:00 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:27:47 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,20 @@ int	ft_strchr2(char *str, char *cmp)
 			y = 0;
 		i++;
 	}
+	return (0);
+}
+
+void	*ft_free_map(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[i] != NULL)
+	{
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+	data->map = NULL;
 	return (0);
 }
