@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:35:58 by axemicha          #+#    #+#             */
-/*   Updated: 2025/04/03 09:27:47 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/04 02:48:49 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,12 @@ void	*ft_free_map(t_data *data)
 	free(data->map);
 	data->map = NULL;
 	return (0);
+}
+
+void	print_img(t_data *data, void *img, int x, int y)
+{
+	if (!data || !data->mlx_ptr || !data->mlx_win || !img)
+		return ;
+	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, img,
+		data->img.width * x, data->img.height * y);
 }

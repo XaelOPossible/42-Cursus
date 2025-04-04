@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:15:45 by axemicha          #+#    #+#             */
-/*   Updated: 2025/04/03 09:30:47 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:52:52 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	**parse_mapt(t_data *data)
 {
 	int	i;
 
+	data->collected = 0;
 	i = 1;
 	ft_check_content(data);
 	if (!ft_check_format(data->map))

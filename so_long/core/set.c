@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:49:55 by axemicha          #+#    #+#             */
-/*   Updated: 2025/03/28 11:04:06 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/04 02:51:23 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,20 @@ void	set_img(t_data *data)
 {
 	data->img.height = 80;
 	data->img.width = 80;
-	data->img.floor = "./rsrc/floor_texture.xpm";
+	data->img.floor = "./rsrc/wood_floor.xpm";
 	data->img.wall = "./rsrc/wall_texture.xpm";
-	data->img.collect = "./rsrc/piece1.xpm";
-	data->img.player = "./rsrc/mario_player1.xpm";
-	data->img.exit = "./rsrc/exit_texture1.xpm";
+	data->img.collect = "./rsrc/ruby.xpm";
+	data->img.player = "./rsrc/character.xpm";
+	data->img.exit_closed = "./rsrc/door_closed.xpm";
+	data->img.exit_open = "./rsrc/door_open.xpm";
 	data->img.img_wall = mlx_xpm_file_to_image(data->mlx_ptr, data->img.wall,
 			&(data->img.width), &(data->img.height));
 	data->img.img_floor = mlx_xpm_file_to_image(data->mlx_ptr, data->img.floor,
 			&(data->img.width), &(data->img.height));
-	data->img.img_exit = mlx_xpm_file_to_image(data->mlx_ptr, data->img.exit,
-			&(data->img.width), &(data->img.height));
+	data->img.img_exit_closed = mlx_xpm_file_to_image(data->mlx_ptr,
+			data->img.exit_closed, &(data->img.width), &(data->img.height));
+	data->img.img_exit_open = mlx_xpm_file_to_image(data->mlx_ptr,
+			data->img.exit_open, &(data->img.width), &(data->img.height));
 	data->img.img_c = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->img.collect, &(data->img.width), &(data->img.height));
 	data->img.img_p = mlx_xpm_file_to_image(data->mlx_ptr,

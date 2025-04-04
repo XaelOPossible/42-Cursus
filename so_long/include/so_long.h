@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:51:10 by axemicha          #+#    #+#             */
-/*   Updated: 2025/04/03 09:33:59 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:29:38 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct img_s
 	void	*img_p;
 	void	*img_player_death;
 	void	*img_exit;
+	void	*img_exit_closed;
+	void	*img_exit_open;
 	void	*img_wall;
 	void	*img_c;
 	int		height;
@@ -56,6 +58,8 @@ typedef struct img_s
 	char	*wall;
 	char	*collect;
 	char	*exit;
+	char	*exit_closed;
+	char	*exit_open;
 }	t_img;
 
 typedef struct data_s
@@ -71,6 +75,7 @@ typedef struct data_s
 	int			count;
 	int			found_collect;
 	int			found_exit;
+	int			collected;
 }				t_data;
 
 int		one_on_line(const char *line);
@@ -111,5 +116,7 @@ void	print_img(t_data *data, void *img, int x, int y);
 int		key_press(int keysym, t_data *data);
 int		chk_collect(t_data *data);
 int		end(t_data *data);
+
+void	display_collectibles(t_data *data);
 
 #endif

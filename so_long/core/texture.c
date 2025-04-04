@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:36:32 by axemicha          #+#    #+#             */
-/*   Updated: 2025/03/28 11:03:24 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/04 02:46:31 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	end(t_data *data)
 		mlx_destroy_image(data->mlx_ptr, data->img.img_floor);
 		mlx_destroy_image(data->mlx_ptr, data->img.img_c);
 		mlx_destroy_image(data->mlx_ptr, data->img.img_p);
-		mlx_destroy_image(data->mlx_ptr, data->img.img_exit);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_exit_closed);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_exit_open);
 		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 	}
 	mlx_destroy_display(data->mlx_ptr);

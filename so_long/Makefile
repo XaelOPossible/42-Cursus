@@ -26,6 +26,7 @@ INC_DIR = ./include/
 
 C_FILE =   map_checker.c render.c set_keymove.c	set.c \
 				texture.c utils.c map.c map_checker2.c \
+				display.c \
 
 SRC	= $(addprefix $(SRC_DIR), $(C_FILE))
 
