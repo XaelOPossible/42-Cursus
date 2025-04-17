@@ -1,22 +1,23 @@
 NAME = push_swap
 
-SOURCES = 
-
-OBJECTS = $(SOURCES:.c=.o)
-
 CC = cc
-
 CFLAGS = -Wall -Werror -Wextra
 
+SRC_DIR = ./src/
 LIB_PATH = ./libmaster
-
 LIBFT = $(LIB_PATH)/libmaster.a
+
+C_FILE = misc.c check_params.c push_swap.c push.c \
+			r_rotate.c rotate.c swap.c initialize.c \
+			list_link.c sort_utils.c sorting.c chunck_sort.c \
+
+SRC = $(addprefix $(SRC_DIR), $(C_FILE))
+OBJECTS = $(SRC:.c=.o)
 
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJECTS)
-	cp $(LIBFT) $(NAME)
-	$(AR) -rcs $(NAME) $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	make -C $(LIB_PATH) all

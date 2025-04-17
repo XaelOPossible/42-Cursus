@@ -6,21 +6,21 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:14:58 by axemicha          #+#    #+#             */
-/*   Updated: 2025/01/16 15:18:11 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:37:41 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFMASTER_H
-# define LIBFMASTER_H
+#ifndef LIBMASTER_H
+# define LIBMASTER_H
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdarg.h>
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 int		ft_atoi(const char *nptr);
 char	*ft_stradd(char *str, char buff);
@@ -52,6 +52,5 @@ void	ft_puthex(unsigned int num, const char type);
 int		ft_hexlen(unsigned int num);
 int		ft_print_arg(va_list args, const char type);
 int		ft_printf(const char *str, ...);
-
 
 #endif
