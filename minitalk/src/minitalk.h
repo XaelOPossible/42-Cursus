@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 13:13:11 by axemicha          #+#    #+#             */
-/*   Updated: 2025/04/18 13:21:19 by axemicha         ###   ########.fr       */
+/*   Created: 2025/02/22 12:01:55 by dmoreux           #+#    #+#             */
+/*   Updated: 2025/04/19 13:28:12 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-int	g_bit_control;
+# include <signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include "../libmaster/include/libmaster.h"
+# define ACK_SIGNAL 1
+# define END_SIGNAL 2
 
-void	send_char(char c, pid_t pid)
-{
-	int	bit;
-	
-	bit = __CHAR_BIT__ * sizeof(c) - 1;
-	while (bit >= 0)
-	{
-		if (kill)
-	}
-}
+extern volatile sig_atomic_t signal_status;
+char	*ft_strjoin_safe(char *s1, char *s2);
+char	*ft_strjoin_and_free(char *s1, char *s2);
+
+#endif

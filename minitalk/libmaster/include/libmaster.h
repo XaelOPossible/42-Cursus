@@ -6,7 +6,7 @@
 /*   By: axemicha <axemicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:14:58 by axemicha          #+#    #+#             */
-/*   Updated: 2025/04/18 05:00:29 by axemicha         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:37:41 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		ft_isdigit(int c);
 char	*ft_itoa(int n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s);

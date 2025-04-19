@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axemicha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 13:13:11 by axemicha          #+#    #+#             */
-/*   Updated: 2025/04/18 13:21:19 by axemicha         ###   ########.fr       */
+/*   Created: 2025/04/18 13:14:38 by axemicha          #+#    #+#             */
+/*   Updated: 2025/04/18 13:18:15 by axemicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <../libmaster/include/libmaster.h>
 
-int	g_bit_control;
-
-void	send_char(char c, pid_t pid)
-{
-	int	bit;
-	
-	bit = __CHAR_BIT__ * sizeof(c) - 1;
-	while (bit >= 0)
-	{
-		if (kill)
-	}
-}
+void	init_sig(int sig, void (*handler)(int, siginfo_t *, void *));
+#endif

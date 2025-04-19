@@ -1,35 +1,42 @@
-SOURCES = server.c client.c
+SRV_SRCS = src/server.c $(FT_PRINTF_SRCS)
+CLI_SRCS = src/client.c $(FT_PRINTF_SRCS)
+UTILS_SRC = src/utils.c
 
-OBJECTS = $(SOURCES:.c=.o)
-
-CC = gcc
+GCC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT_DIR = libmaster
-LIBFT = $(LIBFT_DIR)/libmaster.a
-LIBFT_FLAGS = -L$(LIBFT_DIR) -lmaster
+LIB_PATH = ./libmaster
+LIBFT = $(LIB_PATH)/libmaster.a
 
-all: $(LIBFT) server client
+SRV_OBJS = $(SRV_SRCS:.c=.o)
+CLI_OBJS = $(CLI_SRCS:.c=.o)
+UTILS_OBJS = $(UTILS_SRC:.c=.o)
+
+RM = rm -f
+
+SRV_NAME = server
+CLI_NAME = client
+
+all: $(LIBFT) $(SRV_NAME) $(CLI_NAME)
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	make -C $(LIB_PATH) all
 
-server: server.o $(LIBFT)
-	$(CC) -o $@ server.o $(LIBFT_FLAGS)
+$(SRV_NAME): $(LIBFT) $(SRV_OBJS) $(UTILS_OBJS)
+	$(CC) $(CFLAGS) $(SRV_OBJS) $(UTILS_OBJS) -L$(LIB_PATH) -lmaster -o $(SRV_NAME)
 
-client: client.o $(LIBFT)
-	$(CC) -o $@ client.o $(LIBFT_FLAGS)
+$(CLI_NAME): $(LIBFT) $(CLI_OBJS) $(UTILS_OBJS)
+	$(CC) $(CFLAGS) $(CLI_OBJS) $(UTILS_OBJS) -L$(LIB_PATH) -lmaster -o $(CLI_NAME)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+	$(GCC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS)
-	make -C $(LIBFT_DIR) clean
+	$(RM) $(SRV_OBJS) $(CLI_OBJS) $(UTILS_OBJS)
+	make -C $(LIB_PATH) clean
 
 fclean: clean
-	rm -f server client $(LIBFT)
+	$(RM) $(SRV_NAME) $(CLI_NAME)
+	make -C $(LIB_PATH) fclean
 
 re: fclean all
-
-.PHONY: all clean fclean re
